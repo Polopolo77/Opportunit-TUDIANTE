@@ -99,7 +99,7 @@ function App() {
               handle="paulemile"
               status="Online"
               contactText="Contact Me"
-              avatarUrl="./assets/avatar.png"
+              avatarUrl="./assets/paul-emile.png"
               showUserInfo={true}
               enableTilt={true}
               enableMobileTilt={false}
