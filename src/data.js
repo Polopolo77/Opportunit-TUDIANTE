@@ -6,44 +6,64 @@ const Image = {
 
 export default Image;
 
-import Tools1 from "/assets/tools/vscode.png";
-import Tools2 from "/assets/tools/reactjs.png";
-import Tools3 from "/assets/tools/nextjs.png";
-import Tools4 from "/assets/tools/tailwind.png";
-import Tools5 from "/assets/tools/bootstrap.png";
-import Tools6 from "/assets/tools/js.png";
-import Tools7 from "/assets/tools/nodejs.png";
-import Tools8 from "/assets/tools/github.png";
-import Tools9 from "/assets/tools/ai.png";
-import Tools10 from "/assets/tools/canva.png";
-import Tools11 from "/assets/tools/figma.png";
-import Tools12 from "/assets/tools/kotlin.png";
-import Tools13 from "/assets/tools/firebase.png";
-import Tools14 from "/assets/tools/html.png";
-import Tools15 from "/assets/tools/css.png";
-import Tools16 from "/assets/tools/ts.png";
-import Tools17 from "/assets/tools/php.png";
-import Tools18 from "/assets/tools/vite.png";
-import Tools19 from "/assets/tools/mysql.png";
+// ===== Logos existants (du repo original) =====
+import LogoReact from "/assets/tools/reactjs.png";
+import LogoNext from "/assets/tools/nextjs.png";
+import LogoTailwind from "/assets/tools/tailwind.png";
+import LogoJS from "/assets/tools/js.png";
+import LogoTS from "/assets/tools/ts.png";
+import LogoNode from "/assets/tools/nodejs.png";
+import LogoVite from "/assets/tools/vite.png";
+import LogoGithub from "/assets/tools/github.png";
+import LogoFigma from "/assets/tools/figma.png";
+import LogoVSCode from "/assets/tools/vscode.png";
+import LogoFirebase from "/assets/tools/firebase.png";
+
+// ===== Nouveaux logos IA =====
+import LogoOpenAI from "/assets/tools-new/openai.svg";
+import LogoClaude from "/assets/tools-new/claude.svg";
+import LogoGemini from "/assets/tools-new/gemini.svg";
+import LogoSora from "/assets/tools-new/sora.svg";
+import LogoKling from "/assets/tools-new/kling.svg";
+import LogoSeedance from "/assets/tools-new/seedance.svg";
+import LogoVeo3 from "/assets/tools-new/veo3.svg";
+import LogoElevenLabs from "/assets/tools-new/elevenlabs.svg";
+import LogoCapCut from "/assets/tools-new/capcut.svg";
+import LogoN8n from "/assets/tools-new/n8n.svg";
+import LogoVercel from "/assets/tools-new/vercel.svg";
+import LogoStripe from "/assets/tools-new/stripe.svg";
 
 
 export const listTools = [
-  { id: 1, gambar: Tools2, nama: "React JS", ket: "Framework", dad: "100" },
-  { id: 2, gambar: Tools3, nama: "Next JS", ket: "Framework", dad: "200" },
-  { id: 3, gambar: Tools4, nama: "Tailwind CSS", ket: "Framework", dad: "300" },
-  { id: 4, gambar: Tools6, nama: "Javascript", ket: "Language", dad: "400" },
-  { id: 5, gambar: Tools16, nama: "TypeScript", ket: "Language", dad: "500" },
-  { id: 6, gambar: Tools7, nama: "Node JS", ket: "Runtime", dad: "600" },
-  { id: 7, gambar: Tools18, nama: "Vite", ket: "Build Tool", dad: "700" },
-  { id: 8, gambar: Tools9, nama: "OpenAI / Claude", ket: "IA APIs", dad: "800" },
-  { id: 9, gambar: Tools11, nama: "Figma", ket: "Design", dad: "900" },
-  { id: 10, gambar: Tools8, nama: "GitHub", ket: "Repository", dad: "1000" },
-  { id: 11, gambar: Tools14, nama: "Sora / Kling", ket: "Vidéo IA", dad: "1100" },
-  { id: 12, gambar: Tools15, nama: "ElevenLabs", ket: "Voix IA", dad: "1200" },
-  { id: 13, gambar: Tools1, nama: "VS Code", ket: "Code Editor", dad: "1300" },
-  { id: 14, gambar: Tools17, nama: "n8n", ket: "Automation", dad: "1400" },
-  { id: 15, gambar: Tools19, nama: "PostgreSQL", ket: "Database", dad: "1500" },
-  { id: 16, gambar: Tools13, nama: "Firebase", ket: "Backend", dad: "1600" },
+  // --- IA & APIs ---
+  { id: 1, gambar: LogoOpenAI, nama: "OpenAI", ket: "GPT / DALL-E", dad: "100" },
+  { id: 2, gambar: LogoClaude, nama: "Claude", ket: "Anthropic API", dad: "200" },
+  { id: 3, gambar: LogoGemini, nama: "Gemini", ket: "Google AI", dad: "300" },
+
+  // --- Vidéo IA ---
+  { id: 4, gambar: LogoSora, nama: "Sora", ket: "Vidéo IA OpenAI", dad: "400" },
+  { id: 5, gambar: LogoKling, nama: "Kling", ket: "Vidéo IA", dad: "500" },
+  { id: 6, gambar: LogoSeedance, nama: "Seedance 2.0", ket: "Vidéo IA", dad: "600" },
+  { id: 7, gambar: LogoVeo3, nama: "Veo 3", ket: "Vidéo IA Google", dad: "700" },
+
+  // --- Audio & Montage ---
+  { id: 8, gambar: LogoElevenLabs, nama: "ElevenLabs", ket: "Voix IA", dad: "800" },
+  { id: 9, gambar: LogoCapCut, nama: "CapCut", ket: "Montage Vidéo", dad: "900" },
+
+  // --- Dev ---
+  { id: 10, gambar: LogoReact, nama: "React", ket: "Framework", dad: "1000" },
+  { id: 11, gambar: LogoNext, nama: "Next.js", ket: "Framework", dad: "1100" },
+  { id: 12, gambar: LogoTailwind, nama: "Tailwind CSS", ket: "Styling", dad: "1200" },
+  { id: 13, gambar: LogoNode, nama: "Node.js", ket: "Runtime", dad: "1300" },
+  { id: 14, gambar: LogoTS, nama: "TypeScript", ket: "Language", dad: "1400" },
+
+  // --- Automation & Tools ---
+  { id: 15, gambar: LogoN8n, nama: "n8n", ket: "Automation", dad: "1500" },
+  { id: 16, gambar: LogoVercel, nama: "Vercel", ket: "Déploiement", dad: "1600" },
+  { id: 17, gambar: LogoStripe, nama: "Stripe", ket: "Paiement", dad: "1700" },
+  { id: 18, gambar: LogoFigma, nama: "Figma", ket: "Design", dad: "1800" },
+  { id: 19, gambar: LogoGithub, nama: "GitHub", ket: "Repository", dad: "1900" },
+  { id: 20, gambar: LogoFirebase, nama: "Firebase", ket: "Backend", dad: "2000" },
 ];
 
 // Projets — images placeholder (à remplacer par vos vraies screenshots dans /assets/proyek/)
