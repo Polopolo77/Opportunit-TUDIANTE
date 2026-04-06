@@ -7,7 +7,7 @@
   "use strict";
 
   // ============ CONFIG ============
-  const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+  const API_KEY = "AIzaSyB9htjN-eUD9EBxVeGvK5eBQZVomf4U3H4";
   const MODEL = "gemini-3.1-flash-live-preview";
   const VOICE = "Puck";
 
