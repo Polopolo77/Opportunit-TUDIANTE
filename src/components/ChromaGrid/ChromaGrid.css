@@ -11,10 +11,33 @@
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;
+
   --x: 50%;
   --y: 50%;
   --r: 220px;
 }
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .chroma-grid {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
+    grid-auto-rows: auto;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    --x: 50%;
+    --y: 50%;
+    --r: 220px;
+    }
+}
+
 
 @media (max-width: 1024px) {
   .chroma-grid {
@@ -35,6 +58,7 @@
   border: 1px solid #333;
   transition: border-color 0.3s ease;
   background: var(--card-gradient);
+
   --mouse-x: 50%;
   --mouse-y: 50%;
   --spotlight-color: rgba(255, 255, 255, 0.3);
@@ -48,7 +72,9 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%);
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y),
+      var(--spotlight-color),
+      transparent 70%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -80,35 +106,17 @@
 .chroma-info {
   position: relative;
   z-index: 1;
-  padding: 1rem;
+  padding: 1rem 1rem;
   color: #fff;
   font-family: system-ui, sans-serif;
   display: grid;
-  row-gap: 0.25rem;
+  row-gap: rem;
   column-gap: 0.75rem;
-}
-
-.chroma-info .name {
-  font-size: 1.1rem;
-  font-weight: 700;
 }
 
 .chroma-info .role,
 .chroma-info .handle {
   color: #aaa;
-  font-size: 0.85rem;
-}
-
-.chroma-info .handle {
-  display: inline-block;
-  background: rgba(139, 92, 246, 0.2);
-  color: #a78bfa;
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  width: fit-content;
-  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .chroma-overlay {
@@ -119,12 +127,25 @@
   backdrop-filter: grayscale(1) brightness(0.78);
   -webkit-backdrop-filter: grayscale(1) brightness(0.78);
   background: rgba(0, 0, 0, 0.001);
+
   mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
-    transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%,
-    rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%);
+      transparent 0%,
+      transparent 15%,
+      rgba(0, 0, 0, 0.10) 30%,
+      rgba(0, 0, 0, 0.22) 45%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.50) 75%,
+      rgba(0, 0, 0, 0.68) 88%,
+      white 100%);
   -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
-    transparent 0%, transparent 15%, rgba(0,0,0,0.10) 30%, rgba(0,0,0,0.22) 45%,
-    rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.50) 75%, rgba(0,0,0,0.68) 88%, white 100%);
+      transparent 0%,
+      transparent 15%,
+      rgba(0, 0, 0, 0.10) 30%,
+      rgba(0, 0, 0, 0.22) 45%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.50) 75%,
+      rgba(0, 0, 0, 0.68) 88%,
+      white 100%);
 }
 
 .chroma-fade {
@@ -135,12 +156,26 @@
   backdrop-filter: grayscale(1) brightness(0.78);
   -webkit-backdrop-filter: grayscale(1) brightness(0.78);
   background: rgba(0, 0, 0, 0.001);
+
   mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
-    white 0%, white 15%, rgba(255,255,255,0.90) 30%, rgba(255,255,255,0.78) 45%,
-    rgba(255,255,255,0.65) 60%, rgba(255,255,255,0.50) 75%, rgba(255,255,255,0.32) 88%, transparent 100%);
+      white 0%,
+      white 15%,
+      rgba(255, 255, 255, 0.90) 30%,
+      rgba(255, 255, 255, 0.78) 45%,
+      rgba(255, 255, 255, 0.65) 60%,
+      rgba(255, 255, 255, 0.50) 75%,
+      rgba(255, 255, 255, 0.32) 88%,
+      transparent 100%);
   -webkit-mask-image: radial-gradient(circle var(--r) at var(--x) var(--y),
-    white 0%, white 15%, rgba(255,255,255,0.90) 30%, rgba(255,255,255,0.78) 45%,
-    rgba(255,255,255,0.65) 60%, rgba(255,255,255,0.50) 75%, rgba(255,255,255,0.32) 88%, transparent 100%);
+      white 0%,
+      white 15%,
+      rgba(255, 255, 255, 0.90) 30%,
+      rgba(255, 255, 255, 0.78) 45%,
+      rgba(255, 255, 255, 0.65) 60%,
+      rgba(255, 255, 255, 0.50) 75%,
+      rgba(255, 255, 255, 0.32) 88%,
+      transparent 100%);
+
   opacity: 1;
   transition: opacity 0.25s ease;
 }

@@ -1,34 +1,7 @@
 @import "tailwindcss";
 
-/* ===== Configuration Tailwind custom ===== */
-@theme {
-  --font-sans: 'Inter', sans-serif;
-}
-
-/* ===== Styles globaux ===== */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #000;
-  color: #e5e5e5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* ===== Scrollbar custom ===== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #111;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4f46e5;
-  border-radius: 4px;
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+  }
 }

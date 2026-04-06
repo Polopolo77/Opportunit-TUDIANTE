@@ -2,9 +2,10 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import "./ChromaGrid.css";
 
+// Terima `onItemClick` di props
 export const ChromaGrid = ({
   items,
-  onItemClick,
+  onItemClick, // Fungsi handler dari App.jsx
   className = "",
   radius = 300,
   columns = 3,
@@ -19,6 +20,7 @@ export const ChromaGrid = ({
   const setY = useRef(null);
   const pos = useRef({ x: 0, y: 0 });
 
+  // Gunakan `items` yang di-pass dari App.jsx, bukan data demo
   const data = items?.length ? items : [];
 
   useEffect(() => {
@@ -34,8 +36,14 @@ export const ChromaGrid = ({
 
   const moveTo = (x, y) => {
     gsap.to(pos.current, {
-      x, y, duration: damping, ease,
-      onUpdate: () => { setX.current?.(pos.current.x); setY.current?.(pos.current.y); },
+      x,
+      y,
+      duration: damping,
+      ease,
+      onUpdate: () => {
+        setX.current?.(pos.current.x);
+        setY.current?.(pos.current.y);
+      },
       overwrite: true,
     });
   };
@@ -47,21 +55,33 @@ export const ChromaGrid = ({
   };
 
   const handleLeave = () => {
-    gsap.to(fadeRef.current, { opacity: 1, duration: fadeOut, overwrite: true });
+    gsap.to(fadeRef.current, {
+      opacity: 1,
+      duration: fadeOut,
+      overwrite: true,
+    });
   };
 
   const handleCardMove = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
-    card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-    card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
   };
 
   return (
     <div
       ref={rootRef}
       className={`chroma-grid ${className}`}
-      style={{ "--r": `${radius}px`, "--cols": columns, "--rows": rows }}
+      style={
+        {
+          "--r": `${radius}px`,
+          "--cols": columns,
+          "--rows": rows,
+        }
+      }
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
     >
@@ -70,20 +90,24 @@ export const ChromaGrid = ({
           key={i}
           className="chroma-card"
           onMouseMove={handleCardMove}
+          // Panggil `onItemClick` saat kartu diklik dan kirim datanya
           onClick={() => onItemClick(c)}
-          style={{
-            "--card-border": c.borderColor || "transparent",
-            "--card-gradient": c.gradient,
-            cursor: "pointer",
-          }}
+          style={
+            {
+              "--card-border": c.borderColor || "transparent",
+              "--card-gradient": c.gradient,
+              cursor: "pointer", // Selalu pointer karena akan membuka modal
+            }
+          }
         >
           <div className="chroma-img-wrapper">
             <img src={c.image} alt={c.title} loading="lazy" />
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
-            {c.badge && <span className="handle">{c.badge}</span>}
+            {c.handle && <span className="handle">{c.handle}</span>}
             <p className="role">{c.subtitle}</p>
+            {c.location && <span className="location">{c.location}</span>}
           </footer>
         </article>
       ))}
