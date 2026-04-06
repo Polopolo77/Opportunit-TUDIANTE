@@ -68,6 +68,9 @@ PHRASE D'OUVERTURE :
         right: 28px;
         z-index: 99999;
         display: flex;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.6s ease;
         align-items: center;
         gap: 10px;
         background: linear-gradient(135deg, #6366f1, #8b5cf6);
@@ -87,6 +90,7 @@ PHRASE D'OUVERTURE :
         transform: translateY(-2px);
         box-shadow: 0 6px 32px rgba(99,102,241,0.6);
       }
+      #pe-widget-btn.pe-visible { opacity: 1; pointer-events: auto; }
       #pe-widget-btn.pe-hidden { display: none; }
       @keyframes pe-pulse {
         0%,100% { box-shadow: 0 4px 24px rgba(99,102,241,0.4); }
@@ -281,7 +285,7 @@ PHRASE D'OUVERTURE :
   function injectHTML() {
     const btn = document.createElement("button");
     btn.id = "pe-widget-btn";
-    btn.innerHTML = '<span style="font-size:1.3rem">🎙</span> Parler à l\'assistant';
+    btn.innerHTML = '<span style="font-size:1.3rem">🎙</span> Parler à l\'IA de Paul-Emile';
     document.body.appendChild(btn);
 
     const overlay = document.createElement("div");
@@ -582,6 +586,9 @@ PHRASE D'OUVERTURE :
     $btn.addEventListener("click", connect);
     $hangup.addEventListener("click", disconnect);
     $hangup2.addEventListener("click", disconnect);
+
+    // Apparaît après le PreLoader (~4s)
+    setTimeout(() => { $btn.classList.add("pe-visible"); }, 4000);
   }
 
   if (document.readyState === "loading") {
