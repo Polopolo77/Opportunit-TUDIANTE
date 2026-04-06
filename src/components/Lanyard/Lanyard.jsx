@@ -45,7 +45,17 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   const { nodes, materials } = useGLTF(cardGLB);
   const texture = useTexture(lanyard);
   const cardFaceTexture = useTexture(cardTexturePath);
-  cardFaceTexture.flipY = false;
+  // Copier les paramètres UV de la texture originale du GLB
+  const origMap = materials.base.map;
+  if (origMap) {
+    cardFaceTexture.flipY = origMap.flipY;
+    cardFaceTexture.wrapS = origMap.wrapS;
+    cardFaceTexture.wrapT = origMap.wrapT;
+    cardFaceTexture.repeat.copy(origMap.repeat);
+    cardFaceTexture.offset.copy(origMap.offset);
+    cardFaceTexture.rotation = origMap.rotation;
+    cardFaceTexture.center.copy(origMap.center);
+  }
   cardFaceTexture.needsUpdate = true;
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState(false);
