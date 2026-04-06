@@ -1,6 +1,6 @@
 # Portfolio — Paul-Emile | AI Creative Strategist
 
-Portfolio personnel présentant mes services et réalisations en tant que freelance AI content creator et creative strategist.
+Portfolio personnel avec effets visuels avancés, inspiré du style de [rissss21/portofolio](https://github.com/rissss21/portofolio).
 
 ## Services présentés
 
@@ -9,93 +9,86 @@ Portfolio personnel présentant mes services et réalisations en tant que freela
 - **Automatisations IA** — Agents IA vocaux, workflows n8n, intégrations API
 - **SaaS & Micro-SaaS** — Produits SaaS propulsés par l'IA
 
+## Effets visuels
+
+- **Aurora** — Fond WebGL animé avec shaders (via ogl)
+- **ChromaGrid** — Grille de projets avec spotlight mouse-tracking et grayscale/reveal (via GSAP)
+- **ShinyText** — Effet shimmer sur les textes
+- **BlurText** — Animation mot par mot avec blur (via Framer Motion)
+- **ProjectModal** — Modal animée au clic sur un projet
+- **PreLoader** — Écran de chargement avec compteur 0→100
+- **Dock** — Navigation macOS-style dans le footer (via Framer Motion)
+- **Filtres** — Filtres par catégorie sur la grille de projets
+
 ## Stack technique
 
-- **React** + **Vite** — Framework et build tool
+- **React 19** + **Vite** — Framework et build tool
 - **Tailwind CSS 4** — Styling utility-first
-- **Framer Motion** — Animations
-- **React Icons** — Icônes
+- **GSAP** — Animations ChromaGrid + AOS
+- **Framer Motion** — BlurText, CountUp, Dock
+- **ogl** — Rendu WebGL Aurora
+- **AOS** — Animations au scroll
+- **React Icons** + **Remixicon** — Icônes
 - **Web3Forms** — Envoi du formulaire de contact
 
 ## Installation
 
 ```bash
-# Cloner le repo
-git clone https://github.com/polopolo77/opportunit-tudiante.git
-cd opportunit-tudiante
-
-# Installer les dépendances
 npm install
-
-# Lancer en développement
 npm run dev
-
-# Build pour la production
-npm run build
 ```
 
 ## Personnaliser le contenu
 
 ### Modifier les projets
 
-Tous les projets sont centralisés dans `src/data/projects.js`. Pour ajouter un projet :
+Tous les projets sont dans `src/data/projects.js`. Chaque projet contient :
 
-1. Ouvrir `src/data/projects.js`
-2. Ajouter un objet dans le tableau correspondant (`sitesProjects`, `ugcProjects`, `automationProjects`, `saasProjects`)
-3. Suivre la structure existante (titre, description, tags, image, etc.)
+- `image` — URL de l'image/screenshot
+- `title` — Titre du projet
+- `subtitle` — Description courte (affichée sur la card)
+- `fullDescription` — Description complète (affichée dans le modal)
+- `borderColor` — Couleur de la bordure au hover
+- `gradient` — Gradient de fond de la card
+- `badge` — Badge affiché (Site Web, UGC Vidéo, Automatisation, SaaS, etc.)
+- `tags` — Tags techniques
+- `url` — Lien vers le projet/démo
+- `result` — Résultat chiffré (optionnel, pour les automations)
+- `section` — Catégorie pour le filtre (sites, ugc, automations, saas)
+
+### Configurer le formulaire
+
+Remplacer `VOTRE_CLE_WEB3FORMS` dans `src/App.jsx` par votre clé [Web3Forms](https://web3forms.com/).
 
 ### Modifier les liens sociaux
 
-Dans `src/data/projects.js`, modifier l'objet `socialLinks` avec vos vrais liens LinkedIn et email.
+Mettre à jour `socialLinks` dans `src/data/projects.js`.
 
-### Configurer le formulaire de contact
-
-1. Créer un compte gratuit sur [Web3Forms](https://web3forms.com/)
-2. Remplacer `VOTRE_CLE_WEB3FORMS` dans `src/components/Contact.jsx` par votre clé d'accès
-
-### Modifier les images
-
-Remplacer les URLs `placehold.co` dans `src/data/projects.js` par les vraies images de vos projets (screenshots, thumbnails vidéo, mockups).
-
-## Déploiement
-
-### Vercel (recommandé)
-
-1. Connecter le repo GitHub à [Vercel](https://vercel.com)
-2. Le build se fait automatiquement (`npm run build`)
-3. Le site est déployé en quelques secondes
-
-### Netlify
-
-1. Connecter le repo à [Netlify](https://netlify.com)
-2. Commande de build : `npm run build`
-3. Répertoire de publication : `dist`
-
-## Structure du projet
+## Structure
 
 ```
 src/
 ├── components/
-│   ├── Navbar.jsx           # Navigation + toggle dark/light mode
-│   ├── Hero.jsx             # Section d'accueil (hero)
-│   ├── ProjectCard.jsx      # Card réutilisable pour tous les types de projets
-│   ├── SectionHeader.jsx    # En-tête réutilisable pour les sections
-│   ├── SitesSection.jsx     # Section Sites Web
-│   ├── UgcSection.jsx       # Section UGC Vidéo
-│   ├── AutomationsSection.jsx # Section Automatisations
-│   ├── SaasSection.jsx      # Section SaaS
-│   ├── Contact.jsx          # Section Contact + formulaire
-│   └── Footer.jsx           # Pied de page
+│   ├── Aurora/           # Fond WebGL animé
+│   ├── BlurText/         # Animation texte avec blur
+│   ├── ChromaGrid/       # Grille de projets avec spotlight
+│   ├── CountUp/          # Compteur animé
+│   ├── Dock/             # Dock macOS dans le footer
+│   ├── ProjectModal/     # Modal détail projet
+│   ├── ShinyText/        # Effet shimmer texte
+│   ├── Footer.jsx
+│   ├── Navbar.jsx
+│   └── PreLoader.jsx
 ├── data/
-│   └── projects.js          # Données des projets (à personnaliser)
-├── hooks/
-│   ├── useDarkMode.js       # Hook dark/light mode
-│   └── useScrollReveal.js   # Hook animations au scroll
-├── App.jsx                  # Composant principal
-├── main.jsx                 # Point d'entrée
-└── index.css                # Styles globaux + Tailwind
+│   └── projects.js       # Données des projets
+├── App.jsx               # Composant principal
+├── main.jsx
+└── index.css
 ```
 
-## Licence
+## Déploiement
 
-Projet personnel — tous droits réservés.
+```bash
+npm run build
+# Le dossier dist/ est prêt à déployer sur Vercel, Netlify, etc.
+```
